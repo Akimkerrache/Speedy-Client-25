@@ -1,0 +1,39 @@
+# Dart specific
+.dart_tool/
+.packages
+.pub/
+
+# Build outputs
+build/
+
+# Omitted by macOS
+.DS_Store
+
+# IntelliJ related files
+.idea/
+
+# Flutter specific
+.flutter-plugins
+.flutter-plugins-dependencies
+.flutter-versions
+.flutter/
+
+# Android Studio related files
+*.iml
+.gradle/
+local.properties
+
+# iOS specific
+ios/Pods/
+ios/Runner.xcworkspace/
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+ios/.symlinks/
+
+
+# Web specific
+web/.dart_tool/
+web/build/
+
+# Misc
+*.log

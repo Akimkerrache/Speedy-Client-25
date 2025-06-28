@@ -1,0 +1,100 @@
+{
+  "project_info": {
+    "project_number": "955518756891",
+    "firebase_url": "https://speedy-010111-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "speedy-010111",
+    "storage_bucket": "speedy-010111.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:955518756891:android:8de559f5cfc0dac41e30be",
+        "android_client_info": {
+          "package_name": "com.gcw.driverapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "955518756891-crqbfhl29rplpulpgsk4bb0a7svfillu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gcw.driverapp",
+            "certificate_hash": "ea039520ae1997cc0398f357e74fb10b1b652b3b"
+          }
+        },
+        {
+          "client_id": "955518756891-sh5404apku31d5qmqp4pcv0i96u3afr9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrj6oZpIff7V2AAQ6iIVfSgOcUZsicV94"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "955518756891-sh5404apku31d5qmqp4pcv0i96u3afr9.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "955518756891-gcap1cdga46o0fog1bnb9t07gungphhv.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.gcw.driverapp"
+              }
+            }
+          ]
+        }
+      }
+    },
+
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:955518756891:android:be20d9f50d7161a91e30be",
+        "android_client_info": {
+          "package_name": "com.gcw.userapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "955518756891-qs4aci8amli72r9e1i2503gjrsmiaioq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gcw.userapp",
+            "certificate_hash": "858ef6358d199ed95a65f8ce5e873399c1e609e5"
+          }
+        },
+        {
+          "client_id": "955518756891-sh5404apku31d5qmqp4pcv0i96u3afr9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrj6oZpIff7V2AAQ6iIVfSgOcUZsicV94"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "955518756891-sh5404apku31d5qmqp4pcv0i96u3afr9.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "955518756891-gcap1cdga46o0fog1bnb9t07gungphhv.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.gcw.driverapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

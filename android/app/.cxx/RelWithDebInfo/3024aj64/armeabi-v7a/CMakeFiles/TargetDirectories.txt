@@ -1,0 +1,2 @@
+/Users/akim/Desktop/Softwares/Speedy/speedy_client/android/app/.cxx/RelWithDebInfo/3024aj64/armeabi-v7a/CMakeFiles/edit_cache.dir
+/Users/akim/Desktop/Softwares/Speedy/speedy_client/android/app/.cxx/RelWithDebInfo/3024aj64/armeabi-v7a/CMakeFiles/rebuild_cache.dir
