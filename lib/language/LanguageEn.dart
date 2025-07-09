@@ -3,6 +3,12 @@ import 'BaseLanguage.dart';
 class LanguageEn extends BaseLanguage {
   @override
   String get appName => 'Speedy Client';
+  @override
+  String get chooseCallMethod => 'Choose Call Method';
+  @override
+  String get speedyCall => 'Speedy Call';
+  @override
+  String get phoneCall => 'Phone';
 
   @override
   String get thisFieldRequired => 'This field is required';
@@ -74,7 +80,8 @@ class LanguageEn extends BaseLanguage {
   String get writeMessage => 'Write Message';
 
   @override
-  String get enterTheEmailAssociatedWithYourAccount => 'Enter the email associated with your account';
+  String get enterTheEmailAssociatedWithYourAccount =>
+      'Enter the email associated with your account';
 
   @override
   String get submit => 'Submit';
@@ -128,7 +135,8 @@ class LanguageEn extends BaseLanguage {
   String get emergencyContact => 'Emergency Contact';
 
   @override
-  String get areYouSureYouWantDeleteThisNumber => 'Are you sure you want delete this number?';
+  String get areYouSureYouWantDeleteThisNumber =>
+      'Are you sure you want delete this number?';
 
   @override
   String get addContact => 'Add Contact';
@@ -230,7 +238,8 @@ class LanguageEn extends BaseLanguage {
   String get updatePaymentStatus => 'Update Payment Status';
 
   @override
-  String get waitingForDriverConformation => 'WAITING FOR DRIVER TO CONFIRMATION';
+  String get waitingForDriverConformation =>
+      'WAITING FOR DRIVER TO CONFIRMATION';
 
   @override
   String get continueNewRide => 'Continue new ride';
@@ -278,7 +287,8 @@ class LanguageEn extends BaseLanguage {
   String get logOut => 'Logout';
 
   @override
-  String get areYouSureYouWantToLogoutThisApp => 'Are you sure you want to logout this app?';
+  String get areYouSureYouWantToLogoutThisApp =>
+      'Are you sure you want to logout this app?';
 
   @override
   String get whatWouldYouLikeToGo => 'where you\'d like to go?';
@@ -314,7 +324,8 @@ class LanguageEn extends BaseLanguage {
   String get lookingForNearbyDrivers => 'Looking for nearby drivers';
 
   @override
-  String get weAreLookingForNearDriversAcceptsYourRide => 'We are looking for nearby drivers to\naccepts your ride';
+  String get weAreLookingForNearDriversAcceptsYourRide =>
+      'We are looking for nearby drivers to\naccepts your ride';
 
   @override
   String get get => 'Get';
@@ -374,7 +385,8 @@ class LanguageEn extends BaseLanguage {
   String get completed => 'Completed';
 
   @override
-  String get pleaseEnableLocationPermission => 'Please enable location Permission';
+  String get pleaseEnableLocationPermission =>
+      'Please enable location Permission';
 
   @override
   String get pending => "Pending";
@@ -401,14 +413,16 @@ class LanguageEn extends BaseLanguage {
   String get account => 'Account';
 
   @override
-  String get areYouSureYouWantPleaseReadAffect => 'Are you sure you want to delete your account? Please read how account deletion will affect.';
+  String get areYouSureYouWantPleaseReadAffect =>
+      'Are you sure you want to delete your account? Please read how account deletion will affect.';
 
   @override
   String get deletingAccountEmail =>
       'Deleting your account removes personal information from our database. Your email becomes permanently reserved and same email cannot be re-used to register a new account';
 
   @override
-  String get areYouSureYouWantDeleteAccount => 'Are you sure you want to delete Account?';
+  String get areYouSureYouWantDeleteAccount =>
+      'Are you sure you want to delete Account?';
 
   @override
   String get yourInternetIsNotWorking => 'Your Internet is not working';
@@ -420,7 +434,8 @@ class LanguageEn extends BaseLanguage {
   String get mostReliableMightyRiderApp => 'Most Reliable Mighty Rider App';
 
   @override
-  String get toEnjoyYourRideExperiencePleaseAllowPermissions => 'To enjoy your ride experience\nPlease allow us the following permissions';
+  String get toEnjoyYourRideExperiencePleaseAllowPermissions =>
+      'To enjoy your ride experience\nPlease allow us the following permissions';
 
   @override
   String get txtURLEmpty => "URL is empty";
@@ -471,7 +486,8 @@ class LanguageEn extends BaseLanguage {
   String get moneyDebit => 'Money Debit';
 
   @override
-  String get pleaseAcceptTermsOfServicePrivacyPolicy => 'Please accept Terms of service & Privacy Policy';
+  String get pleaseAcceptTermsOfServicePrivacyPolicy =>
+      'Please accept Terms of service & Privacy Policy';
 
   @override
   String get rememberMe => 'Remember Me';
@@ -537,13 +553,15 @@ class LanguageEn extends BaseLanguage {
   String get lblYou => 'You';
 
   @override
-  String get lblWhoRidingMsg => 'Confirm the rider & make sure the trip information';
+  String get lblWhoRidingMsg =>
+      'Confirm the rider & make sure the trip information';
 
   @override
   String get lblNext => 'Next';
 
   @override
-  String get lblLessWalletAmount => 'Note: You have an insufficient balance in your wallet. Add the amount otherwise, you have to pay via cash.';
+  String get lblLessWalletAmount =>
+      'Note: You have an insufficient balance in your wallet. Add the amount otherwise, you have to pay via cash.';
 
   @override
   String get lblPayWhenEnds => 'Pay when trip ends';
@@ -690,7 +708,8 @@ class LanguageEn extends BaseLanguage {
   String get otpCodeHasBeenSentTo => 'OTP Code has been sent to';
 
   @override
-  String get pleaseEnterOtp => 'Please enter OTP below to verify your mobile number.';
+  String get pleaseEnterOtp =>
+      'Please enter OTP below to verify your mobile number.';
 
   @override
   String get selectSources => 'Select Sources';
@@ -732,13 +751,12 @@ class LanguageEn extends BaseLanguage {
   String get bothPasswordNotMatch => 'Both password should be matched';
 
   @override
-  String get missingBankDetail => 'Missing Bank Details. Complete Your Profile to withdrawal amount';
+  String get missingBankDetail =>
+      'Missing Bank Details. Complete Your Profile to withdrawal amount';
 
   @override
   String get close => 'Close';
 
   @override
   String get copied => 'Copied!';
-
-
 }

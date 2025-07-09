@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
+import 'package:get/get.dart';
 import '../model/UserDetailModel.dart';
 import '../network/RestApis.dart';
 import '../screens/ComplaintScreen.dart';
@@ -21,6 +22,7 @@ import '../utils/Common.dart';
 import '../utils/Constants.dart';
 import '../utils/Extensions/app_common.dart';
 import 'RideHistoryScreen.dart';
+import 'call_screen.dart';
 
 class RideDetailScreen extends StatefulWidget {
   final int orderId;
@@ -80,7 +82,9 @@ class RideDetailScreenState extends State<RideDetailScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(riderModel != null ? "${language.lblRide} #${riderModel!.id}" : "", style: boldTextStyle(color: Colors.white)),
+        title: Text(
+            riderModel != null ? "${language.lblRide} #${riderModel!.id}" : "",
+            style: boldTextStyle(color: Colors.white)),
         actions: [
           if (riderModel != null)
             IconButton(
@@ -108,7 +112,8 @@ class RideDetailScreenState extends State<RideDetailScreen> {
                 children: [
                   driverInformationComponent(),
                   SizedBox(height: 12),
-                  if (riderModel!.otherRiderData != null) otherRiderInfoComponent(),
+                  if (riderModel!.otherRiderData != null)
+                    otherRiderInfoComponent(),
                   if (riderModel!.otherRiderData != null) SizedBox(height: 12),
                   addressComponent(),
                   SizedBox(height: 12),
@@ -132,7 +137,10 @@ class RideDetailScreenState extends State<RideDetailScreen> {
 
   Widget addressComponent() {
     return Container(
-      decoration: BoxDecoration(color: Colors.transparent, border: Border.all(color: dividerColor.withOpacity(0.5)), borderRadius: BorderRadius.circular(8)),
+      decoration: BoxDecoration(
+          color: Colors.transparent,
+          border: Border.all(color: dividerColor.withOpacity(0.5)),
+          borderRadius: BorderRadius.circular(8)),
       padding: EdgeInsets.all(12),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -143,11 +151,14 @@ class RideDetailScreenState extends State<RideDetailScreen> {
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Icon(Ionicons.calendar, color: textSecondaryColorGlobal, size: 16),
+                  Icon(Ionicons.calendar,
+                      color: textSecondaryColorGlobal, size: 16),
                   SizedBox(width: 4),
                   Padding(
                     padding: EdgeInsets.only(top: 2),
-                    child: Text('${printDate(riderModel!.createdAt.validate())}', style: primaryTextStyle(size: 14)),
+                    child: Text(
+                        '${printDate(riderModel!.createdAt.validate())}',
+                        style: primaryTextStyle(size: 14)),
                   ),
                 ],
               ),
@@ -158,11 +169,13 @@ class RideDetailScreenState extends State<RideDetailScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Text(language.invoice, style: primaryTextStyle(color: primaryColor)),
+                    Text(language.invoice,
+                        style: primaryTextStyle(color: primaryColor)),
                     SizedBox(width: 4),
                     Padding(
                       padding: EdgeInsets.only(top: 2),
-                      child: Icon(MaterialIcons.file_download, size: 18, color: primaryColor),
+                      child: Icon(MaterialIcons.file_download,
+                          size: 18, color: primaryColor),
                     ),
                   ],
                 ),
@@ -170,7 +183,9 @@ class RideDetailScreenState extends State<RideDetailScreen> {
             ],
           ),
           SizedBox(height: 16),
-          Text('${language.lblDistance} ${riderModel!.distance!.toStringAsFixed(2)} ${riderModel!.distanceUnit.toString()}', style: boldTextStyle(size: 14)),
+          Text(
+              '${language.lblDistance} ${riderModel!.distance!.toStringAsFixed(2)} ${riderModel!.distanceUnit.toString()}',
+              style: boldTextStyle(size: 14)),
           SizedBox(height: 10),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -184,9 +199,15 @@ class RideDetailScreenState extends State<RideDetailScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        if (riderModel!.startTime != null) Text(riderModel!.startTime != null ? printDate(riderModel!.startTime!) : '', style: secondaryTextStyle(size: 12)),
+                        if (riderModel!.startTime != null)
+                          Text(
+                              riderModel!.startTime != null
+                                  ? printDate(riderModel!.startTime!)
+                                  : '',
+                              style: secondaryTextStyle(size: 12)),
                         if (riderModel!.startTime != null) SizedBox(height: 4),
-                        Text(riderModel!.startAddress.validate(), style: primaryTextStyle(size: 14)),
+                        Text(riderModel!.startAddress.validate(),
+                            style: primaryTextStyle(size: 14)),
                       ],
                     ),
                   ),
@@ -215,9 +236,15 @@ class RideDetailScreenState extends State<RideDetailScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        if (riderModel!.endTime != null) Text(riderModel!.endTime != null ? printDate(riderModel!.endTime!) : '', style: secondaryTextStyle(size: 12)),
+                        if (riderModel!.endTime != null)
+                          Text(
+                              riderModel!.endTime != null
+                                  ? printDate(riderModel!.endTime!)
+                                  : '',
+                              style: secondaryTextStyle(size: 12)),
                         if (riderModel!.endTime != null) SizedBox(height: 4),
-                        Text(riderModel!.endAddress.validate(), style: primaryTextStyle(size: 14)),
+                        Text(riderModel!.endAddress.validate(),
+                            style: primaryTextStyle(size: 14)),
                       ],
                     ),
                   ),
@@ -228,7 +255,8 @@ class RideDetailScreenState extends State<RideDetailScreen> {
           SizedBox(height: 16),
           inkWellWidget(
             onTap: () {
-              launchScreen(context, RideHistoryScreen(rideHistory: rideHistory), pageRouteAnimation: PageRouteAnimation.SlideBottomTop);
+              launchScreen(context, RideHistoryScreen(rideHistory: rideHistory),
+                  pageRouteAnimation: PageRouteAnimation.SlideBottomTop);
             },
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -245,7 +273,10 @@ class RideDetailScreenState extends State<RideDetailScreen> {
 
   Widget paymentDetail() {
     return Container(
-      decoration: BoxDecoration(color: Colors.transparent, border: Border.all(color: dividerColor.withOpacity(0.5)), borderRadius: BorderRadius.circular(8)),
+      decoration: BoxDecoration(
+          color: Colors.transparent,
+          border: Border.all(color: dividerColor.withOpacity(0.5)),
+          borderRadius: BorderRadius.circular(8)),
       padding: EdgeInsets.all(12),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -256,7 +287,8 @@ class RideDetailScreenState extends State<RideDetailScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(language.via, style: primaryTextStyle()),
-              Text(paymentStatus(riderModel!.paymentType.validate()), style: boldTextStyle()),
+              Text(paymentStatus(riderModel!.paymentType.validate()),
+                  style: boldTextStyle()),
             ],
           ),
           SizedBox(height: 16),
@@ -264,7 +296,10 @@ class RideDetailScreenState extends State<RideDetailScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(language.status, style: primaryTextStyle()),
-              Text(paymentStatus(riderModel!.paymentStatus.validate()), style: boldTextStyle(color: paymentStatusColor(riderModel!.paymentStatus.validate()))),
+              Text(paymentStatus(riderModel!.paymentStatus.validate()),
+                  style: boldTextStyle(
+                      color: paymentStatusColor(
+                          riderModel!.paymentStatus.validate()))),
             ],
           ),
         ],
@@ -278,7 +313,10 @@ class RideDetailScreenState extends State<RideDetailScreen> {
       children: [
         Container(
           width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(color: Colors.transparent, border: Border.all(color: dividerColor.withOpacity(0.5)), borderRadius: BorderRadius.circular(8)),
+          decoration: BoxDecoration(
+              color: Colors.transparent,
+              border: Border.all(color: dividerColor.withOpacity(0.5)),
+              borderRadius: BorderRadius.circular(8)),
           padding: EdgeInsets.all(12),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -289,17 +327,26 @@ class RideDetailScreenState extends State<RideDetailScreen> {
                 children: [
                   Icon(Ionicons.person_outline, size: 18),
                   SizedBox(width: 8),
-                  Text(riderModel!.otherRiderData!.name.validate(), style: primaryTextStyle()),
+                  Text(riderModel!.otherRiderData!.name.validate(),
+                      style: primaryTextStyle()),
                 ],
               ),
               SizedBox(height: 10),
               InkWell(
                 onTap: () {
-                  launchUrl(Uri.parse('tel:${riderModel!.otherRiderData!.conatctNumber.validate()}'), mode: LaunchMode.externalApplication);
+                  launchUrl(
+                      Uri.parse(
+                          'tel:${riderModel!.otherRiderData!.conatctNumber.validate()}'),
+                      mode: LaunchMode.externalApplication);
                 },
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [Icon(Icons.call_sharp, size: 18, color: Colors.green), SizedBox(width: 8), Text(riderModel!.otherRiderData!.conatctNumber.validate(), style: primaryTextStyle())],
+                  children: [
+                    Icon(Icons.call_sharp, size: 18, color: Colors.green),
+                    SizedBox(width: 8),
+                    Text(riderModel!.otherRiderData!.conatctNumber.validate(),
+                        style: primaryTextStyle())
+                  ],
                 ),
               ),
             ],
@@ -354,14 +401,19 @@ class RideDetailScreenState extends State<RideDetailScreen> {
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(defaultRadius),
-                  child: commonCachedNetworkImage(riderModel!.driverProfileImage.validate(), height: 50, width: 50, fit: BoxFit.cover),
+                  child: commonCachedNetworkImage(
+                      riderModel!.driverProfileImage.validate(),
+                      height: 50,
+                      width: 50,
+                      fit: BoxFit.cover),
                 ),
                 SizedBox(width: 12),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(riderModel!.driverName.validate(), style: boldTextStyle()),
+                      Text(riderModel!.driverName.validate(),
+                          style: boldTextStyle()),
                       SizedBox(height: 2),
                       if (driverRatting != null)
                         RatingBar.builder(
@@ -372,29 +424,115 @@ class RideDetailScreenState extends State<RideDetailScreen> {
                           wrapAlignment: WrapAlignment.spaceBetween,
                           itemCount: 5,
                           itemSize: 16,
-                          initialRating: double.parse(driverRatting!.rating.toString()),
+                          initialRating:
+                              double.parse(driverRatting!.rating.toString()),
                           itemPadding: EdgeInsets.symmetric(horizontal: 0),
-                          itemBuilder: (context, _) => Icon(Icons.star, color: Colors.amber),
+                          itemBuilder: (context, _) =>
+                              Icon(Icons.star, color: Colors.amber),
                           onRatingUpdate: (rating) {
                             //
                           },
                         ),
-                      if (driverRatting != null)SizedBox(height: 2),
+                      if (driverRatting != null) SizedBox(height: 2),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Expanded(child: Text(riderModel!.riderContactNumber.validate(), style: primaryTextStyle(size: 14))),
+                          Expanded(
+                              child: Text(
+                                  riderModel!.riderContactNumber.validate(),
+                                  style: primaryTextStyle(size: 14))),
                           InkWell(
-                            onTap: () {
-                              launchUrl(Uri.parse('tel:${riderModel!.riderContactNumber}'), mode: LaunchMode.externalApplication);
-                            },
-                            child: Container(
-                              decoration: BoxDecoration(border: Border.all(color: dividerColor), borderRadius: radius(10)),
-                              padding: EdgeInsets.all(4),
-                              child: Icon(Icons.call_sharp, size: 18, color: Colors.green),
-                            ),
-                          )
+                              onTap: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(20),
+                                      ),
+                                      title: Center(
+                                        child: Text(
+                                          language.chooseCallMethod,
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ),
+                                      content: Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          ElevatedButton.icon(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+
+                                              Get.to(() => CallScreen(
+                                                    calleeId:
+                                                        riderModel!.driverId!,
+                                                    callerName:
+                                                        riderModel!.driverName!,
+                                                  ));
+                                            },
+                                            icon: Icon(
+                                              Icons.flash_on,
+                                              color: Colors.yellow,
+                                            ),
+                                            label: Text(
+                                              language.speedyCall,
+                                              style: TextStyle(
+                                                  color: Colors.white),
+                                            ),
+                                            style: ElevatedButton.styleFrom(
+                                              backgroundColor:
+                                                  Colors.blueAccent,
+                                              padding: EdgeInsets.symmetric(
+                                                  vertical: 14, horizontal: 24),
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(12),
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(height: 12),
+                                          OutlinedButton.icon(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+
+                                              launchUrl(
+                                                  Uri.parse(
+                                                      'tel:${riderModel!.riderContactNumber}'),
+                                                  mode: LaunchMode
+                                                      .externalApplication);
+                                            },
+                                            icon: Icon(
+                                              Icons.phone,
+                                              color: Colors.green,
+                                            ),
+                                            label: Text(language.phoneCall),
+                                            style: OutlinedButton.styleFrom(
+                                              padding: EdgeInsets.symmetric(
+                                                  vertical: 14, horizontal: 24),
+                                              side: BorderSide(
+                                                  color: Colors.grey),
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(12),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  },
+                                );
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    border: Border.all(color: dividerColor),
+                                    borderRadius: radius(10)),
+                                padding: EdgeInsets.all(4),
+                                child: Icon(Icons.call_sharp,
+                                    size: 18, color: Colors.green),
+                              ))
                         ],
                       )
                     ],
@@ -421,16 +559,25 @@ class RideDetailScreenState extends State<RideDetailScreen> {
           Text(language.priceDetail, style: boldTextStyle(size: 16)),
           SizedBox(height: 12),
           riderModel!.subtotal! <= riderModel!.minimumFare!
-              ? totalCount(title: language.minimumFare, amount: riderModel!.minimumFare)
+              ? totalCount(
+                  title: language.minimumFare, amount: riderModel!.minimumFare)
               : Column(
                   children: [
-                    totalCount(title: language.basePrice, amount: riderModel!.baseFare),
+                    totalCount(
+                        title: language.basePrice,
+                        amount: riderModel!.baseFare),
                     SizedBox(height: 8),
-                    totalCount(title: language.distancePrice, amount: riderModel!.perDistanceCharge),
+                    totalCount(
+                        title: language.distancePrice,
+                        amount: riderModel!.perDistanceCharge),
                     SizedBox(height: 8),
-                    totalCount(title: language.minutePrice, amount: riderModel!.perMinuteDriveCharge),
+                    totalCount(
+                        title: language.minutePrice,
+                        amount: riderModel!.perMinuteDriveCharge),
                     SizedBox(height: 8),
-                    totalCount(title: language.waitingTimePrice, amount: riderModel!.perMinuteWaitingCharge),
+                    totalCount(
+                        title: language.waitingTimePrice,
+                        amount: riderModel!.perMinuteWaitingCharge),
                   ],
                 ),
           SizedBox(height: 8),
@@ -440,13 +587,17 @@ class RideDetailScreenState extends State<RideDetailScreen> {
               children: [
                 Text(language.couponDiscount, style: secondaryTextStyle()),
                 Text(
-                  "- " + printAmount(riderModel!.couponDiscount!.toStringAsFixed(digitAfterDecimal)),
+                  "- " +
+                      printAmount(riderModel!.couponDiscount!
+                          .toStringAsFixed(digitAfterDecimal)),
                   style: boldTextStyle(color: Colors.green, size: 14),
                 ),
               ],
             ),
-          if (riderModel!.couponData != null && riderModel!.couponDiscount != 0) SizedBox(height: 8),
-          if (riderModel!.tips != null) totalCount(title: language.tip, amount: riderModel!.tips),
+          if (riderModel!.couponData != null && riderModel!.couponDiscount != 0)
+            SizedBox(height: 8),
+          if (riderModel!.tips != null)
+            totalCount(title: language.tip, amount: riderModel!.tips),
           if (riderModel!.tips != null) SizedBox(height: 8),
           if (riderModel!.extraCharges!.isNotEmpty)
             Column(
@@ -459,8 +610,12 @@ class RideDetailScreenState extends State<RideDetailScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(e.key.validate().capitalizeFirstLetter(), style: secondaryTextStyle()),
-                        Text(printAmount(e.value!.toStringAsFixed(digitAfterDecimal)), style: boldTextStyle(size: 14)),
+                        Text(e.key.validate().capitalizeFirstLetter(),
+                            style: secondaryTextStyle()),
+                        Text(
+                            printAmount(
+                                e.value!.toStringAsFixed(digitAfterDecimal)),
+                            style: boldTextStyle(size: 14)),
                       ],
                     ),
                   );
@@ -469,8 +624,14 @@ class RideDetailScreenState extends State<RideDetailScreen> {
             ),
           Divider(thickness: 1),
           payment != null && payment!.driverTips != 0
-              ? totalCount(title: language.total, amount: riderModel!.subtotal! + payment!.driverTips!, isTotal: true)
-              : totalCount(title: language.total, amount: riderModel!.subtotal, isTotal: true),
+              ? totalCount(
+                  title: language.total,
+                  amount: riderModel!.subtotal! + payment!.driverTips!,
+                  isTotal: true)
+              : totalCount(
+                  title: language.total,
+                  amount: riderModel!.subtotal,
+                  isTotal: true),
         ],
       ),
     );

@@ -2,6 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:mqtt_client/mqtt_server_client.dart';
 import 'images.dart';
 
+// agora call
+const String AGORA_APP_ID = 'aa8160d03d634051be015e987dcb5132';
+const String TEMP_TOKEN =
+    '007eJxTYDiqJ5Bx+fUL8+fLHNmsXc5zyqs7fVx8y22eUFaoz0Qb/hgFhsREC0MzgxQD4xQzYxMDU8OkVAND01RLC/OU5CRTQ2MjobiEjIZARoakIy9YGBkgEMRnYyguSE1NqWRgAADZOR2y'; // Use null for testing only
+const String CHANNEL_NAME = 'speedy';
+
 //region App name
 const mAppName = 'Speedy Rider';
 //endregion
@@ -11,12 +17,14 @@ const GOOGLE_MAP_API_KEY = 'AIzaSyC707o3tiVjf-sKpsvadsal7DrU_nddEHI';
 //endregion
 
 //region DomainUrl
-const DOMAIN_URL = 'https://speedydz.icu'; // Don't add slash at the end of the url
+const DOMAIN_URL =
+    'https://speedydz.icu'; // Don't add slash at the end of the url
 //endregion
 
 //region MQTT port and unique name
 final client = MqttServerClient.withPort("broker.hivemq.com", "", 1883);
-const MQTT_UNIQUE_TOPIC_NAME = 'speedy_taxi'; // Don't add underscore at the end of the url
+const MQTT_UNIQUE_TOPIC_NAME =
+    'speedy_taxi'; // Don't add underscore at the end of the url
 //endregion
 
 //region OneSignal Keys
@@ -52,15 +60,18 @@ const PDF_CONTACT_NUMBER = '+213772283194';
 
 //region walkthrough text
 const walkthrough_title_1 = 'Sélectionnez Votre Trajet';
-const walkthrough_subtitle_1 = 'Demandez un trajet \net faites-vous chercher par le chauffeur à proximité';
+const walkthrough_subtitle_1 =
+    'Demandez un trajet \net faites-vous chercher par le chauffeur à proximité';
 const walkthrough_image_1 = ic_walk1;
 
 const walkthrough_title_2 = 'Naviguer Dans Votre Trajet';
-const walkthrough_subtitle_2 = "Voyages fluides \n choix intelligents, voyages sans stress";
+const walkthrough_subtitle_2 =
+    "Voyages fluides \n choix intelligents, voyages sans stress";
 const walkthrough_image_2 = ic_walk2;
 
 const walkthrough_title_3 = 'Suivez Votre Trajet';
-const walkthrough_subtitle_3 = "Connaissez votre service et soyez en mesure\nde visualiser l'emplacement actuel en temps réel sur la Map";
+const walkthrough_subtitle_3 =
+    "Connaissez votre service et soyez en mesure\nde visualiser l'emplacement actuel en temps réel sur la Map";
 const walkthrough_image_3 = ic_walk3;
 //endregion
 
@@ -201,8 +212,10 @@ const CLOCK = 'clock';
 const PRESENT_TOPUP_AMOUNT = 'preset_topup_amount';
 const PRESENT_TIP_AMOUNT = 'preset_tip_amount';
 const RIDE_FOR_OTHER = 'RIDE_FOR_OTHER';
-const MAX_TIME_FOR_RIDER_MINUTE = 'max_time_for_find_drivers_for_regular_ride_in_minute';
-const MAX_TIME_FOR_DRIVER_SECOND = 'ride_accept_decline_duration_for_driver_in_second';
+const MAX_TIME_FOR_RIDER_MINUTE =
+    'max_time_for_find_drivers_for_regular_ride_in_minute';
+const MAX_TIME_FOR_DRIVER_SECOND =
+    'ride_accept_decline_duration_for_driver_in_second';
 const MIN_AMOUNT_TO_ADD = 'min_amount_to_add';
 const MAX_AMOUNT_TO_ADD = 'max_amount_to_add';
 //endregion

@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../utils/firebase_option.dart';
@@ -21,6 +22,7 @@ import 'screens/SplashScreen.dart';
 import 'service/ChatMessagesService.dart';
 import 'service/NotificationService.dart';
 import 'service/UserServices.dart';
+import 'service/incoming_call_service.dart';
 import 'store/AppStore.dart';
 import 'utils/Colors.dart';
 import 'utils/Common.dart';
@@ -58,18 +60,22 @@ Future<void> initialize({
   String? defaultLanguage,
 }) async {
   localeLanguageList = aLocaleLanguageList ?? [];
-  selectedLanguageDataModel = getSelectedLanguageModel(defaultLanguage: defaultLanguage);
+  selectedLanguageDataModel =
+      getSelectedLanguageModel(defaultLanguage: defaultLanguage);
 }
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  IncomingCallService.setupCallkitEventListeners();
   sharedPref = await SharedPreferences.getInstance();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await initialize(aLocaleLanguageList: languageList());
   appStore.setLanguage(defaultLanguage);
 
-  await appStore.setLoggedIn(sharedPref.getBool(IS_LOGGED_IN) ?? false, isInitializing: true);
-  await appStore.setUserEmail(sharedPref.getString(USER_EMAIL) ?? '', isInitialization: true);
+  await appStore.setLoggedIn(sharedPref.getBool(IS_LOGGED_IN) ?? false,
+      isInitializing: true);
+  await appStore.setUserEmail(sharedPref.getString(USER_EMAIL) ?? '',
+      isInitialization: true);
   await appStore.setUserProfile(sharedPref.getString(USER_PROFILE_PHOTO) ?? '');
   oneSignalSettings();
   runApp(MyApp());
@@ -111,7 +117,8 @@ class _MyAppState extends State<MyApp> {
       if (e == ConnectivityResult.none) {
         log('not connected');
         isCurrentlyOnNoInternet = true;
-        launchScreen(navigatorKey.currentState!.overlay!.context, NoInternetScreen());
+        launchScreen(
+            navigatorKey.currentState!.overlay!.context, NoInternetScreen());
       } else {
         if (isCurrentlyOnNoInternet) {
           Navigator.pop(navigatorKey.currentState!.overlay!.context);
@@ -126,7 +133,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return Observer(builder: (context) {
-      return MaterialApp(
+      return GetMaterialApp(
         navigatorKey: navigatorKey,
         debugShowCheckedModeBanner: false,
         title: mAppName,
@@ -146,7 +153,8 @@ class _MyAppState extends State<MyApp> {
           GlobalCupertinoLocalizations.delegate,
         ],
         localeResolutionCallback: (locale, supportedLocales) => locale,
-        locale: Locale(appStore.selectedLanguage.validate(value: defaultLanguage)),
+        locale:
+            Locale(appStore.selectedLanguage.validate(value: defaultLanguage)),
       );
     });
   }
@@ -154,7 +162,8 @@ class _MyAppState extends State<MyApp> {
 
 class MyBehavior extends ScrollBehavior {
   @override
-  Widget buildOverscrollIndicator(BuildContext context, Widget child, ScrollableDetails details) {
+  Widget buildOverscrollIndicator(
+      BuildContext context, Widget child, ScrollableDetails details) {
     return child;
   }
 }

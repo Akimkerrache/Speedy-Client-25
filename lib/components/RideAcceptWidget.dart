@@ -1,5 +1,6 @@
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../main.dart';
 import '../model/CurrentRequestModel.dart';
 import '../model/LoginResponse.dart';
@@ -7,6 +8,7 @@ import '../network/RestApis.dart';
 import '../screens/ChatScreen.dart';
 import '../screens/ReviewScreen.dart';
 import '../screens/DashBoardScreen.dart';
+import '../screens/call_screen.dart';
 import '../utils/Colors.dart';
 import '../utils/Constants.dart';
 import '../utils/Extensions/AppButtonWidget.dart';
@@ -58,7 +60,8 @@ class RideAcceptWidgetState extends State<RideAcceptWidget> {
       "status": CANCELED,
       "reason": reason,
     };
-    await rideRequestUpdate(request: req, rideId: widget.rideRequest!.id).then((value) async {
+    await rideRequestUpdate(request: req, rideId: widget.rideRequest!.id)
+        .then((value) async {
       launchScreen(getContext, DashBoardScreen(), isNewTask: true);
 
       toast(value.message);
@@ -79,7 +82,9 @@ class RideAcceptWidgetState extends State<RideAcceptWidget> {
               alignment: Alignment.center,
               height: 5,
               width: 70,
-              decoration: BoxDecoration(color: primaryColor, borderRadius: BorderRadius.circular(defaultRadius)),
+              decoration: BoxDecoration(
+                  color: primaryColor,
+                  borderRadius: BorderRadius.circular(defaultRadius)),
             ),
           ),
           SizedBox(height: 12),
@@ -87,8 +92,11 @@ class RideAcceptWidgetState extends State<RideAcceptWidget> {
             alignment: Alignment.topLeft,
             child: Container(
               padding: EdgeInsets.symmetric(vertical: 4, horizontal: 8),
-              decoration: BoxDecoration(color: primaryColor, borderRadius: radius()),
-              child: Text(statusName(status: widget.rideRequest!.status.validate()), style: boldTextStyle(color: Colors.white)),
+              decoration:
+                  BoxDecoration(color: primaryColor, borderRadius: radius()),
+              child: Text(
+                  statusName(status: widget.rideRequest!.status.validate()),
+                  style: boldTextStyle(color: Colors.white)),
             ),
           ),
           SizedBox(height: 12),
@@ -99,12 +107,16 @@ class RideAcceptWidgetState extends State<RideAcceptWidget> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(widget.driverData!.driverService!.name.validate(), style: boldTextStyle()),
+                    Text(widget.driverData!.driverService!.name.validate(),
+                        style: boldTextStyle()),
                     SizedBox(height: 2),
                     Row(
                       children: [
-                        Text(language.lblCarNumberPlate, style: secondaryTextStyle()),
-                        Text('(${widget.driverData!.userDetail!.carPlateNumber.validate()})', style: secondaryTextStyle()),
+                        Text(language.lblCarNumberPlate,
+                            style: secondaryTextStyle()),
+                        Text(
+                            '(${widget.driverData!.userDetail!.carPlateNumber.validate()})',
+                            style: secondaryTextStyle()),
                       ],
                     ),
                   ],
@@ -112,8 +124,11 @@ class RideAcceptWidgetState extends State<RideAcceptWidget> {
               ),
               Container(
                 padding: EdgeInsets.all(8),
-                decoration: BoxDecoration(border: Border.all(color: dividerColor), borderRadius: radius(defaultRadius)),
-                child: Text('${language.otp} ${widget.rideRequest!.otp ?? ''}', style: boldTextStyle()),
+                decoration: BoxDecoration(
+                    border: Border.all(color: dividerColor),
+                    borderRadius: radius(defaultRadius)),
+                child: Text('${language.otp} ${widget.rideRequest!.otp ?? ''}',
+                    style: boldTextStyle()),
               ),
             ],
           ),
@@ -123,7 +138,11 @@ class RideAcceptWidgetState extends State<RideAcceptWidget> {
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(20),
-                child: commonCachedNetworkImage(widget.driverData!.profileImage.validate(), fit: BoxFit.cover, height: 40, width: 40),
+                child: commonCachedNetworkImage(
+                    widget.driverData!.profileImage.validate(),
+                    fit: BoxFit.cover,
+                    height: 40,
+                    width: 40),
               ),
               SizedBox(width: 8),
               Expanded(
@@ -131,9 +150,12 @@ class RideAcceptWidgetState extends State<RideAcceptWidget> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text('${widget.driverData!.firstName.validate()} ${widget.driverData!.lastName.validate()}', style: boldTextStyle()),
+                    Text(
+                        '${widget.driverData!.firstName.validate()} ${widget.driverData!.lastName.validate()}',
+                        style: boldTextStyle()),
                     SizedBox(height: 2),
-                    Text('${widget.driverData!.email.validate()}', style: secondaryTextStyle()),
+                    Text('${widget.driverData!.email.validate()}',
+                        style: secondaryTextStyle()),
                   ],
                 ),
               ),
@@ -144,28 +166,103 @@ class RideAcceptWidgetState extends State<RideAcceptWidget> {
                     builder: (_) {
                       return AlertDialog(
                         contentPadding: EdgeInsets.all(0),
-                        content: AlertScreen(rideId: widget.rideRequest!.id, regionId: widget.rideRequest!.regionId),
+                        content: AlertScreen(
+                            rideId: widget.rideRequest!.id,
+                            regionId: widget.rideRequest!.regionId),
                       );
                     },
                   );
                 },
                 child: Container(
                   padding: EdgeInsets.symmetric(vertical: 4, horizontal: 8),
-                  decoration: BoxDecoration(border: Border.all(color: dividerColor), borderRadius: radius(defaultRadius)),
+                  decoration: BoxDecoration(
+                      border: Border.all(color: dividerColor),
+                      borderRadius: radius(defaultRadius)),
                   child: Text(language.sos, style: boldTextStyle(size: 14)),
                 ),
               ),
               SizedBox(width: 8),
               inkWellWidget(
                 onTap: () {
-                  launchScreen(context, ChatScreen(userData: userData), pageRouteAnimation: PageRouteAnimation.SlideBottomTop);
+                  launchScreen(context, ChatScreen(userData: userData),
+                      pageRouteAnimation: PageRouteAnimation.SlideBottomTop);
                 },
                 child: chatCallWidget(Icons.chat_bubble_outline),
               ),
               SizedBox(width: 8),
               inkWellWidget(
                 onTap: () {
-                  launchUrl(Uri.parse('tel:${widget.driverData!.contactNumber}'), mode: LaunchMode.externalApplication);
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        title: Center(
+                          child: Text(
+                            language.chooseCallMethod,
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        content: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            ElevatedButton.icon(
+                              onPressed: () {
+                                Navigator.pop(context);
+                                Get.to(() => CallScreen(
+                                      calleeId: widget.driverData!.id!,
+                                      callerName:
+                                          '${widget.driverData!.firstName.validate()} ${widget.driverData!.lastName.validate()}',
+                                    ));
+                              },
+                              icon: Icon(
+                                Icons.flash_on,
+                                color: Colors.yellow,
+                              ),
+                              label: Text(
+                                language.speedyCall,
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.blueAccent,
+                                padding: EdgeInsets.symmetric(
+                                    vertical: 14, horizontal: 24),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                              ),
+                            ),
+                            SizedBox(height: 12),
+                            OutlinedButton.icon(
+                              onPressed: () {
+                                Navigator.pop(context);
+
+                                launchUrl(
+                                    Uri.parse(
+                                        'tel:${widget.driverData!.contactNumber}'),
+                                    mode: LaunchMode.externalApplication);
+                              },
+                              icon: Icon(
+                                Icons.phone,
+                                color: Colors.green,
+                              ),
+                              label: Text(language.phoneCall),
+                              style: OutlinedButton.styleFrom(
+                                padding: EdgeInsets.symmetric(
+                                    vertical: 14, horizontal: 24),
+                                side: BorderSide(color: Colors.grey),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                  );
                 },
                 child: chatCallWidget(Icons.call),
               ),
@@ -180,7 +277,11 @@ class RideAcceptWidgetState extends State<RideAcceptWidget> {
                 children: [
                   Icon(Icons.near_me, color: Colors.green, size: 18),
                   SizedBox(width: 8),
-                  Expanded(child: Text(widget.rideRequest!.startAddress ?? ''.validate(), style: primaryTextStyle(size: 14), maxLines: 2)),
+                  Expanded(
+                      child: Text(
+                          widget.rideRequest!.startAddress ?? ''.validate(),
+                          style: primaryTextStyle(size: 14),
+                          maxLines: 2)),
                 ],
               ),
               Row(
@@ -202,7 +303,9 @@ class RideAcceptWidgetState extends State<RideAcceptWidget> {
                 children: [
                   Icon(Icons.location_on, color: Colors.red, size: 18),
                   SizedBox(width: 8),
-                  Expanded(child: Text(widget.rideRequest!.endAddress ?? '', style: primaryTextStyle(size: 14), maxLines: 2)),
+                  Expanded(
+                      child: Text(widget.rideRequest!.endAddress ?? '',
+                          style: primaryTextStyle(size: 14), maxLines: 2)),
                 ],
               ),
             ],
@@ -219,7 +322,12 @@ class RideAcceptWidgetState extends State<RideAcceptWidget> {
                   textStyle: boldTextStyle(color: Colors.white),
                   color: primaryColor,
                   onTap: () {
-                    launchScreen(context, ReviewScreen(driverData: widget.driverData, rideRequest: widget.rideRequest!), pageRouteAnimation: PageRouteAnimation.SlideBottomTop);
+                    launchScreen(
+                        context,
+                        ReviewScreen(
+                            driverData: widget.driverData,
+                            rideRequest: widget.rideRequest!),
+                        pageRouteAnimation: PageRouteAnimation.SlideBottomTop);
                   },
                 ),
               ],
@@ -250,7 +358,10 @@ class RideAcceptWidgetState extends State<RideAcceptWidget> {
   Widget chatCallWidget(IconData icon) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-      decoration: BoxDecoration(border: Border.all(color: dividerColor), color: appStore.isDarkMode ? scaffoldColorDark : scaffoldColorLight, borderRadius: BorderRadius.circular(defaultRadius)),
+      decoration: BoxDecoration(
+          border: Border.all(color: dividerColor),
+          color: appStore.isDarkMode ? scaffoldColorDark : scaffoldColorLight,
+          borderRadius: BorderRadius.circular(defaultRadius)),
       child: Icon(icon, size: 18, color: primaryColor),
     );
   }

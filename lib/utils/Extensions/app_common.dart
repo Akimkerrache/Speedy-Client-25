@@ -6,7 +6,12 @@ import '../../utils/Extensions/StringExtensions.dart';
 import '../../../main.dart';
 import '../Constants.dart';
 
-TextStyle boldTextStyle({int? size, Color? color, FontWeight? weight, TextDecoration? textDecoration, double? letterSpacing}) {
+TextStyle boldTextStyle(
+    {int? size,
+    Color? color,
+    FontWeight? weight,
+    TextDecoration? textDecoration,
+    double? letterSpacing}) {
   return TextStyle(
       fontSize: size != null ? size.toDouble() : textBoldSizeGlobal,
       color: color ?? textPrimaryColorGlobal,
@@ -63,7 +68,12 @@ Color getColorFromHex(String hexColor, {Color? defaultColor}) {
   return Color(int.parse(hexColor, radix: 16));
 }
 
-void toast(String? value, {ToastGravity? gravity, length = Toast.LENGTH_SHORT, Color? bgColor, Color? textColor, bool print = false}) {
+void toast(String? value,
+    {ToastGravity? gravity,
+    length = Toast.LENGTH_SHORT,
+    Color? bgColor,
+    Color? textColor,
+    bool print = false}) {
   if (value!.isEmpty || (!kIsWeb && Platform.isLinux)) {
     log(value);
   } else {
@@ -80,7 +90,10 @@ void toast(String? value, {ToastGravity? gravity, length = Toast.LENGTH_SHORT, C
 }
 
 /// Launch a new screen
-Future<T?> launchScreen<T>(BuildContext context, Widget child, {bool isNewTask = false, PageRouteAnimation? pageRouteAnimation, Duration? duration}) async {
+Future<T?> launchScreen<T>(BuildContext context, Widget child,
+    {bool isNewTask = false,
+    PageRouteAnimation? pageRouteAnimation,
+    Duration? duration}) async {
   if (isNewTask) {
     return await Navigator.of(context).pushAndRemoveUntil(
       buildPageRoute(child, pageRouteAnimation, duration),
@@ -95,24 +108,28 @@ Future<T?> launchScreen<T>(BuildContext context, Widget child, {bool isNewTask =
 
 enum PageRouteAnimation { Fade, Scale, Rotate, Slide, SlideBottomTop }
 
-Route<T> buildPageRoute<T>(Widget? child, PageRouteAnimation? pageRouteAnimation, Duration? duration) {
+Route<T> buildPageRoute<T>(
+    Widget? child, PageRouteAnimation? pageRouteAnimation, Duration? duration) {
   if (pageRouteAnimation != null) {
     if (pageRouteAnimation == PageRouteAnimation.Fade) {
       return PageRouteBuilder(
         pageBuilder: (c, a1, a2) => child!,
-        transitionsBuilder: (c, anim, a2, child) => FadeTransition(opacity: anim, child: child),
+        transitionsBuilder: (c, anim, a2, child) =>
+            FadeTransition(opacity: anim, child: child),
         transitionDuration: Duration(milliseconds: 1000),
       );
     } else if (pageRouteAnimation == PageRouteAnimation.Rotate) {
       return PageRouteBuilder(
         pageBuilder: (c, a1, a2) => child!,
-        transitionsBuilder: (c, anim, a2, child) => RotationTransition(child: child, turns: ReverseAnimation(anim)),
+        transitionsBuilder: (c, anim, a2, child) =>
+            RotationTransition(child: child, turns: ReverseAnimation(anim)),
         transitionDuration: Duration(milliseconds: 700),
       );
     } else if (pageRouteAnimation == PageRouteAnimation.Scale) {
       return PageRouteBuilder(
         pageBuilder: (c, a1, a2) => child!,
-        transitionsBuilder: (c, anim, a2, child) => ScaleTransition(child: child, scale: anim),
+        transitionsBuilder: (c, anim, a2, child) =>
+            ScaleTransition(child: child, scale: anim),
         transitionDuration: Duration(milliseconds: 700),
       );
     } else if (pageRouteAnimation == PageRouteAnimation.Slide) {
@@ -120,7 +137,8 @@ Route<T> buildPageRoute<T>(Widget? child, PageRouteAnimation? pageRouteAnimation
         pageBuilder: (c, a1, a2) => child!,
         transitionsBuilder: (c, anim, a2, child) => SlideTransition(
           child: child,
-          position: Tween(begin: Offset(1.0, 0.0), end: Offset(0.0, 0.0)).animate(anim),
+          position: Tween(begin: Offset(1.0, 0.0), end: Offset(0.0, 0.0))
+              .animate(anim),
         ),
         transitionDuration: Duration(milliseconds: 500),
       );
@@ -129,7 +147,8 @@ Route<T> buildPageRoute<T>(Widget? child, PageRouteAnimation? pageRouteAnimation
         pageBuilder: (c, a1, a2) => child!,
         transitionsBuilder: (c, anim, a2, child) => SlideTransition(
           child: child,
-          position: Tween(begin: Offset(0.0, 1.0), end: Offset(0.0, 0.0)).animate(anim),
+          position: Tween(begin: Offset(0.0, 1.0), end: Offset(0.0, 0.0))
+              .animate(anim),
         ),
         transitionDuration: Duration(milliseconds: 500),
       );
@@ -176,7 +195,7 @@ Radius radiusCircular([double? radius]) {
 }
 
 class DefaultValues {
-  final String defaultLanguage = "fr";
+  final String defaultLanguage = kDebugMode ? "en" : "fr";
 }
 
 DefaultValues defaultValues = DefaultValues();
