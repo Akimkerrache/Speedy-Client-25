@@ -3,7 +3,7 @@
     "project_number": "955518756891",
     "firebase_url": "https://speedy-010111-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "speedy-010111",
-    "storage_bucket": "speedy-010111.appspot.com"
+    "storage_bucket": "speedy-010111.firebasestorage.app"
   },
   "client": [
     {

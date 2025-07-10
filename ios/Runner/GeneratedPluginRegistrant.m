@@ -78,6 +78,12 @@
 @import flutter_callkit_incoming;
 #endif
 
+#if __has_include(<flutter_image_compress_common/ImageCompressPlugin.h>)
+#import <flutter_image_compress_common/ImageCompressPlugin.h>
+#else
+@import flutter_image_compress_common;
+#endif
+
 #if __has_include(<flutter_inappwebview_ios/InAppWebViewFlutterPlugin.h>)
 #import <flutter_inappwebview_ios/InAppWebViewFlutterPlugin.h>
 #else
@@ -237,6 +243,7 @@
   [FLTFirebaseDatabasePlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTFirebaseDatabasePlugin"]];
   [FLTFirebaseStoragePlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTFirebaseStoragePlugin"]];
   [FlutterCallkitIncomingPlugin registerWithRegistrar:[registry registrarForPlugin:@"FlutterCallkitIncomingPlugin"]];
+  [ImageCompressPlugin registerWithRegistrar:[registry registrarForPlugin:@"ImageCompressPlugin"]];
   [InAppWebViewFlutterPlugin registerWithRegistrar:[registry registrarForPlugin:@"InAppWebViewFlutterPlugin"]];
   [FlutterNativeContactPickerPlugin registerWithRegistrar:[registry registrarForPlugin:@"FlutterNativeContactPickerPlugin"]];
   [FluttertoastPlugin registerWithRegistrar:[registry registrarForPlugin:@"FluttertoastPlugin"]];
