@@ -3,7 +3,12 @@ import 'BaseLanguage.dart';
 class LanguageHi extends BaseLanguage {
   @override
   String get appName => 'शक्तिशाली सवार';
-
+  @override
+  String get chooseCallMethod => 'कॉल का तरीका चुनें';
+  @override
+  String get speedyCall => 'तेज़ कॉल';
+  @override
+  String get phoneCall => 'फ़ोन';
   @override
   String get thisFieldRequired => 'यह फ़ील्ड आवश्यक है';
 
@@ -74,7 +79,8 @@ class LanguageHi extends BaseLanguage {
   String get writeMessage => 'संदेश लिखना';
 
   @override
-  String get enterTheEmailAssociatedWithYourAccount => 'अपने खाते से जुड़े ईमेल दर्ज करें';
+  String get enterTheEmailAssociatedWithYourAccount =>
+      'अपने खाते से जुड़े ईमेल दर्ज करें';
 
   @override
   String get submit => 'जमा करना';
@@ -128,7 +134,8 @@ class LanguageHi extends BaseLanguage {
   String get emergencyContact => 'आपातकालीन संपर्क';
 
   @override
-  String get areYouSureYouWantDeleteThisNumber => 'क्या आप सुनिश्चित हैं कि आप इस नंबर को हटाना चाहते हैं?';
+  String get areYouSureYouWantDeleteThisNumber =>
+      'क्या आप सुनिश्चित हैं कि आप इस नंबर को हटाना चाहते हैं?';
 
   @override
   String get addContact => 'संपर्क जोड़ें';
@@ -230,7 +237,8 @@ class LanguageHi extends BaseLanguage {
   String get updatePaymentStatus => 'अद्यतन भुगतान की स्थिति';
 
   @override
-  String get waitingForDriverConformation => 'पुष्टि करने के लिए ड्राइवर की प्रतीक्षा कर रहा है';
+  String get waitingForDriverConformation =>
+      'पुष्टि करने के लिए ड्राइवर की प्रतीक्षा कर रहा है';
 
   @override
   String get continueNewRide => 'नई सवारी जारी रखें';
@@ -278,7 +286,8 @@ class LanguageHi extends BaseLanguage {
   String get logOut => 'लॉग आउट';
 
   @override
-  String get areYouSureYouWantToLogoutThisApp => 'क्या आप सुनिश्चित हैं कि आप इस ऐप को लॉगआउट करना चाहते हैं?';
+  String get areYouSureYouWantToLogoutThisApp =>
+      'क्या आप सुनिश्चित हैं कि आप इस ऐप को लॉगआउट करना चाहते हैं?';
 
   @override
   String get whatWouldYouLikeToGo => 'आप कहाँ जाना पसंद करते हैं?';
@@ -314,7 +323,8 @@ class LanguageHi extends BaseLanguage {
   String get lookingForNearbyDrivers => 'आस -पास के ड्राइवरों की तलाश में';
 
   @override
-  String get weAreLookingForNearDriversAcceptsYourRide => 'हम आपकी सवारी के लिए आस -पास के ड्राइवरों की तलाश कर रहे हैं';
+  String get weAreLookingForNearDriversAcceptsYourRide =>
+      'हम आपकी सवारी के लिए आस -पास के ड्राइवरों की तलाश कर रहे हैं';
 
   @override
   String get get => 'पाना';
@@ -347,7 +357,8 @@ class LanguageHi extends BaseLanguage {
   String get driverReview => 'चालक की समीक्षा';
 
   @override
-  String get signInUsingYourMobileNumber => 'अपने \ nmobile नंबर का उपयोग करके साइन इन करें';
+  String get signInUsingYourMobileNumber =>
+      'अपने \ nmobile नंबर का उपयोग करके साइन इन करें';
 
   @override
   String get otp => 'ओटीपी';
@@ -374,7 +385,8 @@ class LanguageHi extends BaseLanguage {
   String get completed => 'पुरा होना।';
 
   @override
-  String get pleaseEnableLocationPermission => 'कृपया स्थान की अनुमति सक्षम करें';
+  String get pleaseEnableLocationPermission =>
+      'कृपया स्थान की अनुमति सक्षम करें';
 
   @override
   String get pending => 'लंबित';
@@ -401,14 +413,16 @@ class LanguageHi extends BaseLanguage {
   String get account => 'खाता';
 
   @override
-  String get areYouSureYouWantPleaseReadAffect => 'क्या आप इस खाते को हटाने के लिए सुनिश्चित हैं? कृपया पढ़ें कि खाता विलोपन कैसे प्रभावित करेगा।';
+  String get areYouSureYouWantPleaseReadAffect =>
+      'क्या आप इस खाते को हटाने के लिए सुनिश्चित हैं? कृपया पढ़ें कि खाता विलोपन कैसे प्रभावित करेगा।';
 
   @override
   String get deletingAccountEmail =>
       'अपने खाते को हटाने से हमारे डेटाबेस से व्यक्तिगत जानकारी हट जाती है। आपका ईमेल स्थायी रूप से आरक्षित हो जाता है और एक नया खाता पंजीकृत करने के लिए एक ही ईमेल का फिर से उपयोग नहीं किया जा सकता है';
 
   @override
-  String get areYouSureYouWantDeleteAccount => 'क्या आप सुनिश्चित हैं कि आप खाता हटाना चाहते हैं?';
+  String get areYouSureYouWantDeleteAccount =>
+      'क्या आप सुनिश्चित हैं कि आप खाता हटाना चाहते हैं?';
 
   @override
   String get yourInternetIsNotWorking => 'आपका इंटरनेट काम नहीं कर रहा है';
@@ -420,7 +434,8 @@ class LanguageHi extends BaseLanguage {
   String get mostReliableMightyRiderApp => 'सबसे विश्वसनीय शक्तिशाली राइडर ऐप';
 
   @override
-  String get toEnjoyYourRideExperiencePleaseAllowPermissions => 'अपने सवारी अनुभव का आनंद लेने के लिए \ nplease हमें निम्नलिखित अनुमतियों की अनुमति दें';
+  String get toEnjoyYourRideExperiencePleaseAllowPermissions =>
+      'अपने सवारी अनुभव का आनंद लेने के लिए \ nplease हमें निम्नलिखित अनुमतियों की अनुमति दें';
 
   @override
   String get txtURLEmpty => 'URL खाली है';
@@ -435,7 +450,8 @@ class LanguageHi extends BaseLanguage {
   String get paymentVia => 'के माध्यम से भुगतान करना';
 
   @override
-  String get demoMsg => 'परीक्षक की भूमिका इस कार्रवाई को करने की अनुमति नहीं है';
+  String get demoMsg =>
+      'परीक्षक की भूमिका इस कार्रवाई को करने की अनुमति नहीं है';
 
   @override
   String get findPlace => 'एक जगह ढूंढो...';
@@ -471,7 +487,8 @@ class LanguageHi extends BaseLanguage {
   String get moneyDebit => 'मनी डेबिट';
 
   @override
-  String get pleaseAcceptTermsOfServicePrivacyPolicy => 'कृपया सेवा और गोपनीयता नीति की शर्तें स्वीकार करें';
+  String get pleaseAcceptTermsOfServicePrivacyPolicy =>
+      'कृपया सेवा और गोपनीयता नीति की शर्तें स्वीकार करें';
 
   @override
   String get rememberMe => 'मुझे याद करो';
@@ -537,13 +554,15 @@ class LanguageHi extends BaseLanguage {
   String get lblYou => 'आप';
 
   @override
-  String get lblWhoRidingMsg => 'राइडर की पुष्टि करें और सुनिश्चित करें कि यात्रा की जानकारी';
+  String get lblWhoRidingMsg =>
+      'राइडर की पुष्टि करें और सुनिश्चित करें कि यात्रा की जानकारी';
 
   @override
   String get lblNext => 'अगला';
 
   @override
-  String get lblLessWalletAmount => 'नोट: आपके बटुए में एक अपर्याप्त संतुलन है। अन्यथा राशि जोड़ें, आपको नकदी के माध्यम से भुगतान करना होगा।';
+  String get lblLessWalletAmount =>
+      'नोट: आपके बटुए में एक अपर्याप्त संतुलन है। अन्यथा राशि जोड़ें, आपको नकदी के माध्यम से भुगतान करना होगा।';
 
   @override
   String get lblPayWhenEnds => 'यात्रा समाप्त होने पर भुगतान करें';
@@ -690,7 +709,8 @@ class LanguageHi extends BaseLanguage {
   String get otpCodeHasBeenSentTo => 'OTP कोड भेजा गया है';
 
   @override
-  String get pleaseEnterOtp => 'कृपया अपना मोबाइल नंबर सत्यापित करने के लिए नीचे OTP दर्ज करें।';
+  String get pleaseEnterOtp =>
+      'कृपया अपना मोबाइल नंबर सत्यापित करने के लिए नीचे OTP दर्ज करें।';
 
   @override
   String get selectSources => 'स्रोतों का चयन करें';
@@ -732,7 +752,8 @@ class LanguageHi extends BaseLanguage {
   String get bothPasswordNotMatch => 'दोनों पासवर्ड का मिलान किया जाना चाहिए';
 
   @override
-  String get missingBankDetail => 'गुम बैंक विवरण। राशि वापस लेने के लिए अपनी प्रोफ़ाइल को पूरा करें';
+  String get missingBankDetail =>
+      'गुम बैंक विवरण। राशि वापस लेने के लिए अपनी प्रोफ़ाइल को पूरा करें';
 
   @override
   String get close => 'बंद करना';

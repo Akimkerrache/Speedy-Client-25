@@ -3,7 +3,12 @@ import 'BaseLanguage.dart';
 class LanguageAr extends BaseLanguage {
   @override
   String get appName => 'Speedy Client';
-
+  @override
+  String get chooseCallMethod => 'اختر طريقة الاتصال';
+  @override
+  String get speedyCall => 'مكالمة سريعة';
+  @override
+  String get phoneCall => 'الهاتف';
   @override
   String get thisFieldRequired => 'هذه الخانة مطلوبه';
 
@@ -74,7 +79,8 @@ class LanguageAr extends BaseLanguage {
   String get writeMessage => 'اكتب رسالة';
 
   @override
-  String get enterTheEmailAssociatedWithYourAccount => 'أدخل البريد الإلكتروني المرتبط بحسابك';
+  String get enterTheEmailAssociatedWithYourAccount =>
+      'أدخل البريد الإلكتروني المرتبط بحسابك';
 
   @override
   String get submit => 'يُقدِّم';
@@ -128,7 +134,8 @@ class LanguageAr extends BaseLanguage {
   String get emergencyContact => 'الاتصال بالطوارىء';
 
   @override
-  String get areYouSureYouWantDeleteThisNumber => 'هل أنت متأكد أنك تريد حذف هذا الرقم؟';
+  String get areYouSureYouWantDeleteThisNumber =>
+      'هل أنت متأكد أنك تريد حذف هذا الرقم؟';
 
   @override
   String get addContact => 'إضافة جهة اتصال';
@@ -278,7 +285,8 @@ class LanguageAr extends BaseLanguage {
   String get logOut => 'تسجيل خروج';
 
   @override
-  String get areYouSureYouWantToLogoutThisApp => 'هل أنت متأكد من أنك تريد تسجيل هذا التطبيق؟';
+  String get areYouSureYouWantToLogoutThisApp =>
+      'هل أنت متأكد من أنك تريد تسجيل هذا التطبيق؟';
 
   @override
   String get whatWouldYouLikeToGo => 'أين تحب الذهاب؟';
@@ -314,7 +322,8 @@ class LanguageAr extends BaseLanguage {
   String get lookingForNearbyDrivers => 'تبحث عن السائقين القريبين';
 
   @override
-  String get weAreLookingForNearDriversAcceptsYourRide => 'نحن نبحث عن برامج تشغيل قريبة إلى \ naccepts رحلتك';
+  String get weAreLookingForNearDriversAcceptsYourRide =>
+      'نحن نبحث عن برامج تشغيل قريبة إلى \ naccepts رحلتك';
 
   @override
   String get get => 'يحصل';
@@ -347,7 +356,8 @@ class LanguageAr extends BaseLanguage {
   String get driverReview => 'مراجعة السائق';
 
   @override
-  String get signInUsingYourMobileNumber => 'تسجيل الدخول باستخدام رقم \ nmobile';
+  String get signInUsingYourMobileNumber =>
+      'تسجيل الدخول باستخدام رقم \ nmobile';
 
   @override
   String get otp => 'OTP';
@@ -401,14 +411,16 @@ class LanguageAr extends BaseLanguage {
   String get account => 'حساب';
 
   @override
-  String get areYouSureYouWantPleaseReadAffect => 'هل انت متأكد انك تريد حذف حسابك؟ يرجى قراءة كيفية تأثير حذف الحساب.';
+  String get areYouSureYouWantPleaseReadAffect =>
+      'هل انت متأكد انك تريد حذف حسابك؟ يرجى قراءة كيفية تأثير حذف الحساب.';
 
   @override
   String get deletingAccountEmail =>
       'حذف حسابك يزيل المعلومات الشخصية من قاعدة البيانات الخاصة بنا. يصبح بريدك الإلكتروني محجوزًا بشكل دائم ولا يمكن إعادة استخدام البريد الإلكتروني نفسه لتسجيل حساب جديد';
 
   @override
-  String get areYouSureYouWantDeleteAccount => 'هل أنت متأكد من أنك تريد حذف الحساب؟';
+  String get areYouSureYouWantDeleteAccount =>
+      'هل أنت متأكد من أنك تريد حذف الحساب؟';
 
   @override
   String get yourInternetIsNotWorking => 'الإنترنت الخاص بك لا يعمل';
@@ -420,7 +432,8 @@ class LanguageAr extends BaseLanguage {
   String get mostReliableMightyRiderApp => 'تطبيق رايدر الأكثر موثوقية موثوقية';
 
   @override
-  String get toEnjoyYourRideExperiencePleaseAllowPermissions => 'للاستمتاع بتجربة رحلتك \ nplease ، تسمح لنا بالأذونات التالية';
+  String get toEnjoyYourRideExperiencePleaseAllowPermissions =>
+      'للاستمتاع بتجربة رحلتك \ nplease ، تسمح لنا بالأذونات التالية';
 
   @override
   String get txtURLEmpty => 'عنوان URL فارغ';
@@ -471,7 +484,8 @@ class LanguageAr extends BaseLanguage {
   String get moneyDebit => 'خصم المال';
 
   @override
-  String get pleaseAcceptTermsOfServicePrivacyPolicy => 'يرجى قبول شروط الخدمة وسياسة الخصوصية';
+  String get pleaseAcceptTermsOfServicePrivacyPolicy =>
+      'يرجى قبول شروط الخدمة وسياسة الخصوصية';
 
   @override
   String get rememberMe => 'تذكرنى';
@@ -543,7 +557,8 @@ class LanguageAr extends BaseLanguage {
   String get lblNext => 'التالي';
 
   @override
-  String get lblLessWalletAmount => 'ملاحظة: لديك توازن غير كافٍ في محفظتك. أضف المبلغ خلاف ذلك ، عليك أن تدفع عبر النقد.';
+  String get lblLessWalletAmount =>
+      'ملاحظة: لديك توازن غير كافٍ في محفظتك. أضف المبلغ خلاف ذلك ، عليك أن تدفع عبر النقد.';
 
   @override
   String get lblPayWhenEnds => 'ادفع عندما تنتهي الرحلة';
@@ -690,7 +705,8 @@ class LanguageAr extends BaseLanguage {
   String get otpCodeHasBeenSentTo => 'تم إرسال رمز OTP إلى';
 
   @override
-  String get pleaseEnterOtp => 'الرجاء إدخال OTP أدناه للتحقق من رقم هاتفك المحمول.';
+  String get pleaseEnterOtp =>
+      'الرجاء إدخال OTP أدناه للتحقق من رقم هاتفك المحمول.';
 
   @override
   String get selectSources => 'حدد المصادر';
@@ -732,7 +748,8 @@ class LanguageAr extends BaseLanguage {
   String get bothPasswordNotMatch => 'يجب أن تتم مطابقة كلمة المرور';
 
   @override
-  String get missingBankDetail => 'تفاصيل البنوك المفقودة. أكمل ملف التعريف الخاص بك إلى مبلغ السحب';
+  String get missingBankDetail =>
+      'تفاصيل البنوك المفقودة. أكمل ملف التعريف الخاص بك إلى مبلغ السحب';
 
   @override
   String get close => 'يغلق';

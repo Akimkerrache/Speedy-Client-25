@@ -1,0 +1,6 @@
+-keep class androidx.window.** { *; }
+-keepclassmembers class androidx.window.** { *; }
+-dontwarn androidx.window.**
+-dontwarn java.beans.**
+-dontwarn org.w3c.dom.**
+-keep class com.hiennv.flutter_callkit_incoming.** { *; }
