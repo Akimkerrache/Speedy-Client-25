@@ -17,6 +17,7 @@ import '../utils/Extensions/app_common.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../utils/Common.dart';
 import '../screens/AlertScreen.dart';
+import 'CancelOrderDialog.dart';
 
 class RideAcceptWidget extends StatefulWidget {
   final Driver? driverData;
@@ -269,7 +270,6 @@ class RideAcceptWidgetState extends State<RideAcceptWidget> {
             ],
           ),
           SizedBox(height: 16),
-
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -310,7 +310,6 @@ class RideAcceptWidgetState extends State<RideAcceptWidget> {
               ),
             ],
           ),
-
           Visibility(
             visible: widget.rideRequest!.status == COMPLETED,
             child: Column(
@@ -333,23 +332,27 @@ class RideAcceptWidgetState extends State<RideAcceptWidget> {
               ],
             ),
           ),
-          // if (widget.rideRequest!.status == ACCEPTED || widget.rideRequest!.status == ARRIVING || widget.rideRequest!.status == ARRIVED)
-          //   AppButtonWidget(
-          //     width: MediaQuery.of(context).size.width,
-          //     text: language.cancelRide,
-          //     onTap: () {
-          //       showDialog(
-          //         context: context,
-          //         builder: (context) {
-          //           return CancelOrderDialog(
-          //             onCancel: (reason) {
-          //               cancelRequest(reason);
-          //             },
-          //           );
-          //         },
-          //       );
-          //     },
-          //   )
+          SizedBox(height: 15),
+          if (widget.rideRequest!.status == ACCEPTED ||
+              widget.rideRequest!.status == ARRIVING ||
+              widget.rideRequest!.status == ARRIVED)
+            AppButtonWidget(
+              width: MediaQuery.of(context).size.width,
+              text: language.cancelRide,
+              onTap: () {
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    return CancelOrderDialog(
+                      onCancel: (reason) {
+                        cancelRequest(reason);
+                      },
+                    );
+                  },
+                );
+              },
+            ),
+          SizedBox(height: 5),
         ],
       ),
     );
