@@ -4,6 +4,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_image_compress/flutter_image_compress.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:paginate_firestore/paginate_firestore.dart';
 import 'package:path_provider/path_provider.dart';
 import '../model/LoginResponse.dart';
@@ -94,61 +95,94 @@ class _ChatScreenState extends State<ChatScreen> {
     uid: sharedPref.getString(UID),
     playerId: sharedPref.getString(PLAYER_ID),
   );
-  void pickAndSendImage() async {
-    FilePickerResult? result = await FilePicker.platform.pickFiles(
-      type: FileType.image,
-      allowMultiple: false,
+  void showImageSourceDialog(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.white,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+      ),
+      builder: (context) {
+        return Wrap(
+          children: [
+            ListTile(
+              leading: Icon(Icons.camera_alt),
+              title: Text('Take Photo'),
+              onTap: () {
+                Navigator.pop(context);
+                pickAndSendImage(ImageSource.camera);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.photo),
+              title: Text('Choose from Gallery'),
+              onTap: () {
+                Navigator.pop(context);
+                pickAndSendImage(ImageSource.gallery);
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  final ImagePicker _picker = ImagePicker();
+
+  void pickAndSendImage(ImageSource source) async {
+    final XFile? pickedFile =
+        await _picker.pickImage(source: source, imageQuality: 85);
+    if (pickedFile == null) return;
+
+    File imageFile = File(pickedFile.path);
+    File compressedFile =
+        await compressImage(imageFile); // your existing compression function
+
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) {
+        return Dialog(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+          child: _buildLoaderDialog(),
+        );
+      },
     );
 
-    if (result != null && result.files.single.path != null) {
-      File imageFile = File(result.files.single.path!);
-      File compressedFile = await compressImage(imageFile);
+    try {
+      String fileName = '${DateTime.now().millisecondsSinceEpoch}.jpg';
+      final ref =
+          FirebaseStorage.instance.ref().child('chatImages').child(fileName);
 
-      showDialog(
-        context: context,
-        barrierDismissible: false,
-        builder: (context) {
-          return Dialog(
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-            elevation: 0,
-            backgroundColor: Colors.transparent,
-            child: _buildLoaderDialog(),
-          );
-        },
-      );
+      UploadTask uploadTask = ref.putFile(compressedFile);
+      await uploadTask.whenComplete(() => {});
+      String downloadUrl = await ref.getDownloadURL();
 
-      try {
-        String fileName = '${DateTime.now().millisecondsSinceEpoch}.jpg';
-        final ref =
-            FirebaseStorage.instance.ref().child('chatImages').child(fileName);
+      Navigator.pop(context);
 
-        UploadTask uploadTask = ref.putFile(compressedFile);
-        await uploadTask.whenComplete(() => {});
-        String downloadUrl = await ref.getDownloadURL();
+      ChatMessageModel data = ChatMessageModel();
+      data.receiverId = widget.userData!.uid;
+      data.senderId = sender.uid;
+      data.messageType = MessageType.IMAGE.name;
+      data.message = downloadUrl;
+      data.isMessageRead = false;
+      data.createdAt = DateTime.now().millisecondsSinceEpoch;
 
-        Navigator.pop(context);
+      await chatMessageService.addMessage(data).then((value) async {
+        await chatMessageService.addMessageToDb(
+            value, data, sender, widget.userData);
+      });
 
-        ChatMessageModel data = ChatMessageModel();
-        data.receiverId = widget.userData!.uid;
-        data.senderId = sender.uid;
-        data.messageType = MessageType.IMAGE.name;
-        data.message = downloadUrl;
-        data.isMessageRead = false;
-        data.createdAt = DateTime.now().millisecondsSinceEpoch;
-
-        await chatMessageService.addMessage(data).then((value) async {
-          await chatMessageService.addMessageToDb(
-              value, data, sender, widget.userData);
-        });
-        notificationService
-            .sendPushNotifications(sharedPref.getString(USER_NAME)!, '📷 Image',
-                receiverPlayerId: widget.userData!.playerId)
-            .catchError(log);
-      } catch (e) {
-        Navigator.pop(context);
-        toast('Upload failed: $e');
-      }
+      notificationService
+          .sendPushNotifications(sharedPref.getString(USER_NAME)!, '📷 Image',
+              receiverPlayerId: widget.userData!.playerId)
+          .catchError(log);
+    } catch (e) {
+      Navigator.pop(context);
+      toast('Upload failed: $e');
     }
   }
 
@@ -316,7 +350,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     IconButton(
                       icon: Icon(Icons.image, color: primaryColor),
                       onPressed: () {
-                        pickAndSendImage();
+                        showImageSourceDialog(context);
                       },
                     ),
                     Expanded(
